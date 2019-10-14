@@ -1,0 +1,46 @@
+<div class="col-md-12 col-sm-6 container">
+
+  <div>
+      <div class="main">
+          <div class="form-group has-search">
+              <input type="text"  [(ngModel)]="queryString" class="form-control" placeholder="Search">
+            </div>          
+        </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th >Id</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Company Name</th>
+      <th>City</th>
+      <th>state</th>
+      <th>zip</th>
+      <th>email</th>
+      <th>web</th>
+      <th>age</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let user of users|filter: queryString : 'name'  | paginate: config">
+      <td >{{user.id}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.company_name}}</td>
+      <td>{{user.city}}</td>
+      <td>{{user.state}}</td>
+      <td>{{user.zip}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.web}}</td>
+      <td>{{user.age}}</td>
+      
+    </tr>
+    </tbody>
+  </table>
+
+    <!-- <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination> -->
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+ 
+
+</div>
