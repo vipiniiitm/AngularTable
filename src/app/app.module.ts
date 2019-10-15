@@ -8,10 +8,9 @@ import { routing } from './app.routing';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { JwPaginationComponent } from 'jw-angular-pagination';
+
 import {NgxPaginationModule} from 'ngx-pagination';
-// search module
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +18,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
     TableComponent,
     ListComponent,
     FilterPipe,
-    JwPaginationComponent,
+   
  
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     routing,
+   
     FormsModule,
     NgxPaginationModule
   ],

@@ -11,6 +11,7 @@ export class TableComponent implements OnInit {
   config: any;
   users:any=[];
   items = [];
+  headElements = ['id', 'FirstName', 'LastName', 'Company Name','City','state','zip','email','web','age'];
   pageOfItems: Array<any>;
   number;
   constructor(private router: Router, private apiService: ApiService) {
@@ -23,7 +24,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     
-
     this.apiService.getUsers()
       .subscribe( data => {
           this.users = data;
@@ -33,18 +33,15 @@ export class TableComponent implements OnInit {
   }
   
 
-  editUser(): void {
+  // showUser(): void {
    
-    this.router.navigate(['list']);
-  };
+  //   this.router.navigate(['list']);
+  // };
 
   pageChanged(event){
     this.config.currentPage = event;
   }
-  onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems = pageOfItems;
-}
+
   }
 
 

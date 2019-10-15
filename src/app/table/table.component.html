@@ -1,4 +1,4 @@
-<div class="col-md-12 col-sm-6 container">
+<div class=" container">
 
   <div>
       <div class="main">
@@ -6,24 +6,17 @@
               <input type="text"  [(ngModel)]="queryString" class="form-control" placeholder="Search">
             </div>          
         </div>
-  <table class="table table-striped">
-    <thead>
+  <table class="table table-striped z-depth-1 table-bordered" id="tableSortExample" mdbTable >
+    <thead  style=" background-color: deepskyblue;  color: white;" >
     <tr>
-      <th >Id</th>
-      <th>FirstName</th>
-      <th>LastName</th>
-      <th>Company Name</th>
-      <th>City</th>
-      <th>state</th>
-      <th>zip</th>
-      <th>email</th>
-      <th>web</th>
-      <th>age</th>
+      <th *ngFor="let head of headElements; let i = index" >{{head | titlecase}}
+        <!-- <mdb-icon fas icon="sort"></mdb-icon> -->
+      </th>
     </tr>
     </thead>
     <tbody>
 
-    <tr *ngFor="let user of users|filter: queryString : 'name'  | paginate: config"   [routerLink]="['/list/']">
+    <tr *ngFor="let user of users|filter: queryString : 'name'  | paginate: config"   [routerLink]="['/list/',user.id]">
       <td >{{user.id}}</td>
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
@@ -39,7 +32,7 @@
     </tbody>
   </table>
 
-    <!-- <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination> -->
+    
     <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
  
 

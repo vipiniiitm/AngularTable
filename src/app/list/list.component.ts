@@ -9,20 +9,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   product;
-  isLoadingResults = true;
+  item: any;
+
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
 
   ngOnInit() {
+
     this.getProductDetails(this.route.snapshot.params['id']);
+  }
+  goBack(){
+    this.router.navigate(['/table']);
   }
 
   getProductDetails(id) {
     this.api.getProduct(id)
       .subscribe(data => {
         this.product = data;
-        console.log(this.product);
-        this.isLoadingResults = false;
+        console.log('result',this.product);
+       
       });
   }
+
+ 
 
 }

@@ -19,10 +19,6 @@ export class ApiService {
     return this.http.get(this.baseUrl);
   }
 
-  getUserById(id: number){
-    return this.http.get(`${this.baseUrl}/${id}`);
-  }
- 
   getProduct(id: number) {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get(url).pipe(
