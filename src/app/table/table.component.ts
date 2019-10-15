@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.items = Array(500).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
+    
 
     this.apiService.getUsers()
       .subscribe( data => {

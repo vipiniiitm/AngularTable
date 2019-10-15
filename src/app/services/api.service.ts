@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import {Observable} from "rxjs/index";
+import {Observable, of} from "rxjs/index";
+import { catchError, tap, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,24 @@ export class ApiService {
   }
 
   getUserById(id: number){
-    return this.http.get(this.baseUrl + id);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
+ 
+  getProduct(id: number) {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get(url).pipe(
+      tap(_ => console.log(`fetched product id=${id}`)),
+      catchError(this.handleError(`getProduct id=${id}`))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    }
+}
+  
 
 }
